@@ -1,0 +1,12 @@
+application: handsign-gen
+version: 1
+runtime: php
+api_version: 1
+threadsafe: yes
+
+inbound_services:
+- warmup
+
+handlers:
+- url: /.*
+  script: script/helloworld.php
