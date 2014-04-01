@@ -8,5 +8,12 @@ inbound_services:
 - warmup
 
 handlers:
-- url: /.*
-  script: script/helloworld.php
+# Serve images as static resources.
+- url: /(.+\.(gif|png|jpg))$
+  static_files: static/\1
+  upload: .+\.(gif|png|jpg)$
+  application_readable: true
+
+# Serve php scripts.
+- url: /(.+\.php)$
+  script: script/\1
