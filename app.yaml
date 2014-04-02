@@ -8,12 +8,22 @@ inbound_services:
 - warmup
 
 handlers:
-# Serve images as static resources.
+- url: /
+  static_files: static/index.html
+  upload: index.html
+
+- url: /(.+\.(html|css|js|ico))$
+  static_files: static/\1
+  upload: .+\.(html|css|js|ico|ttf)$
+
+- url: /(.+\.php)$
+  script: script/\1
+
 - url: /(.+\.(gif|png|jpg))$
   static_files: static/\1
   upload: .+\.(gif|png|jpg)$
-  application_readable: true
 
-# Serve php scripts.
-- url: /(.+\.php)$
-  script: script/\1
+- url: /image/template.png
+  static_files: /static/image/template.png
+  upload: template.png
+  application_readable: true
