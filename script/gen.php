@@ -62,6 +62,10 @@ function drawText($key, $index, $W, $H, $x, $y, $size = 20) {
         $text = $_POST[$key][$index];
     }
 
+    if (empty($text)) {
+        return null;
+    }
+
     $xyf = calc($W, $H, $size, $text);
     return imagettftext($image, $xyf[2], 0, $x + $xyf[0], $y + $xyf[1], $black, $font, $text);
 }
