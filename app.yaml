@@ -4,22 +4,22 @@ runtime: php
 api_version: 1
 threadsafe: yes
 
-inbound_services:
-- warmup
+#inbound_services:
+#- warmup
 
 handlers:
 - url: /
   static_files: static/index.html
-  upload: index.html
+  upload: static/index.html
 
-- url: /(.+\.(html|css|js|ico|gif|png|jpg))$
+- url: /image/template.png
+  static_files: static/image/template.png
+  upload: static/image/template.png
+  application_readable: true
+
+- url: /(.+\.(html|css|js|txt|ico|gif|png|jpg))$
   static_files: static/\1
-  upload: .+\.(html|css|js|ico|gif|png|jpg|ttf)$
+  upload: static/.+\.(html|css|js|txt|ico|gif|png|jpg)$
 
 - url: /(.+\.php)$
   script: script/\1
-
-- url: /image/template.png
-  static_files: /static/image/template.png
-  upload: template.png
-  application_readable: true
