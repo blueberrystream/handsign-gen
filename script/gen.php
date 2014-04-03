@@ -4,17 +4,17 @@ require_once('const.inc');
 // check session
 session_start();
 $sid = session_id();
-if (empty($sid) || $_SESSION[$sid] !== SESSION_VALUE) {
+if (empty($sid) || !array_key_exists($sid, $_SESSION) || $_SESSION[$sid] !== SESSION_VALUE) {
     syslog(LOG_WARNING, 'invalid session from ' . $_SERVER['REMOTE_ADDR']);
     die('invalid access');
 }
 
 // destroy session
-if (isset($_COOKIE[session_name()])) {
-    setcookie(session_name(), '', 0, '/');
-}
-$_SESSION = array();
-session_destroy();
+//if (isset($_COOKIE[session_name()])) {
+//    setcookie(session_name(), '', 0, '/');
+//}
+//$_SESSION = array();
+//session_destroy();
 session_commit();
 
 // check http method
