@@ -3,7 +3,8 @@ require_once('const.inc');
 
 // check session
 session_start();
-if ($_SESSION[session_id()] !== SESSION_VALUE) {
+$sid = session_id();
+if ($_SESSION[$sid] !== SESSION_VALUE) {
     syslog(LOG_WARNING, 'invalid session from ' . $_SERVER['REMOTE_ADDR']);
     die('invalid access');
 }
@@ -22,8 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die('invalid access');
 }
 
-// put http header: Content-type
-header('Content-type: image/png');
+// put http header: Content-Type, Content-Disposition
+header('Content-Type: image/png');
+header('Content-Disposition: attachment; filename="' . $sid . '.png"');
 
 // prepare to generate image
 $image = imagecreatefrompng(TEMPLATE_IMAGE_FILE);
