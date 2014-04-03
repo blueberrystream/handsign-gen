@@ -4,7 +4,7 @@ require_once('const.inc');
 // check session
 session_start();
 $sid = session_id();
-if ($_SESSION[$sid] !== SESSION_VALUE) {
+if (empty($sid) || $_SESSION[$sid] !== SESSION_VALUE) {
     syslog(LOG_WARNING, 'invalid session from ' . $_SERVER['REMOTE_ADDR']);
     die('invalid access');
 }
