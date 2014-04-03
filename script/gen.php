@@ -53,8 +53,6 @@ imagepng($image);
 imagedestroy($image);
 
 function drawText($key, $index, $W, $H, $x, $y, $size = 20) {
-    syslog(LOG_DEBUG, "drawText: $key$index");
-
     global $image, $font, $black;
     if ($key === 'title') {
         $text = $_POST[$key];
@@ -66,6 +64,7 @@ function drawText($key, $index, $W, $H, $x, $y, $size = 20) {
         return null;
     }
 
+    syslog(LOG_DEBUG, "drawText: $key$index");
     $xyf = calc($W, $H, $size, $text);
     return imagettftext($image, $xyf[2], 0, $x + $xyf[0], $y + $xyf[1], $black, $font, $text);
 }
