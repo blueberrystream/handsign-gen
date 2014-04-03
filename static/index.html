@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>ハンドサイン一覧ジェネレーター</title>
+    <link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+    <img src="/image/template.png" alt="handsign" id="template-image">
+    <form method="post" action="/gen.php">
+        <table>
+            <tr>
+                <td colspan="3">
+                    <input type="text" name="title" placeholder="○○がよく使うハンドサイン一覧" id="text-title">
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" name="sign[1]" placeholder="1"></td>
+                <td><input type="text" name="sign[2]" placeholder="2"></td>
+                <td><input type="text" name="sign[3]" placeholder="3"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="sign[4]" placeholder="4"></td>
+                <td><input type="text" name="sign[5]" placeholder="5"></td>
+                <td><input type="text" name="sign[6]" placeholder="6"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="sign[7]" placeholder="7"></td>
+                <td><input type="text" name="sign[8]" placeholder="8"></td>
+                <td><input type="text" name="sign[9]" placeholder="9"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="sign[10]" placeholder="10"></td>
+                <td><input type="text" name="sign[11]" placeholder="11"></td>
+                <td><input type="text" name="sign[12]" placeholder="12"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label><input type="radio" name="font" value="m">IPAex明朝</label>
+                    <label><input type="radio" name="font" value="g" checked="checked">IPAexゴシック</label>
+                </td>
+                <td><input type="submit"></td>
+            </tr>
+        </table>
+    </form>
+    <iframe id="sphp" src="/s.php"></iframe>
+</body>
+</html>
